@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101923">
+  <meta name="description" content="OpenRA community project page and links to the game, documentation, and source code.">
+  <title>OpenRA — Real-Time Strategy</title>
+  <style>
+    :root { color-scheme: dark; --bg:#101923; --panel:#192735; --line:#304354; --text:#edf4f8; --muted:#b1c1cd; --accent:#f1b84b; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--text); background:radial-gradient(ellipse at top,#20374a,var(--bg) 65%); }
+    main { width:min(920px,calc(100% - 32px)); margin:0 auto; padding:64px 0; }
+    .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem; }
+    h1 { font-size:clamp(2.5rem,8vw,5rem); line-height:1.05; margin:.4rem 0 1rem; }
+    p { color:var(--muted); max-width:66ch; }
+    .panel { margin-top:28px; border:1px solid var(--line); border-radius:18px; padding:24px; background:rgba(25,39,53,.86); }
+    nav { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    a { color:var(--accent); }
+    nav a { display:inline-block; border:1px solid #506274; border-radius:10px; padding:11px 15px; text-decoration:none; font-weight:650; }
+    nav a:hover, nav a:focus-visible { background:#2c4051; outline:2px solid var(--accent); outline-offset:2px; }
+    footer { margin-top:40px; color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Open-source RTS</div>
+    <h1>OpenRA</h1>
+    <p>A libre real-time strategy engine inspired by classic Westwood-era games, with support for community mods, custom maps, and multiplayer.</p>
+    <section class="panel" aria-labelledby="about">
+      <h2 id="about">Command your next match</h2>
+      <p>This project page links to the source repository and official resources. GitHub Pages hosts this static landing page; the playable game is a separate native application and is not run in the browser by this site.</p>
+      <nav aria-label="Project resources">
+        <a href="https://github.com/ArkansasIo/OpenRA-">Source code</a>
+        <a href="https://www.openra.net/">Official website</a>
+        <a href="https://docs.openra.net/">Documentation</a>
+        <a href="https://github.com/OpenRA/OpenRA/wiki/Modding-Guide">Modding guide</a>
+      </nav>
+    </section>
+    <footer>Community project page. OpenRA is free software; see the repository license for details.</footer>
+  </main>
+</body>
+</html>
