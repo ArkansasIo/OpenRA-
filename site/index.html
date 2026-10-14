@@ -4,62 +4,97 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101923">
-  <meta name="description" content="OpenRA game downloads, source code, build instructions, and documentation.">
+  <meta name="description" content="OpenRA desktop game downloads, source code, platform build artifacts, and documentation.">
   <title>OpenRA — Real-Time Strategy</title>
   <style>
-    :root { color-scheme: dark; --bg:#101923; --panel:#192735; --line:#304354; --text:#edf4f8; --muted:#b1c1cd; --accent:#f1b84b; }
+    :root { color-scheme: dark; --bg:#101923; --panel:#192735; --line:#304354; --text:#edf4f8; --muted:#b1c1cd; --accent:#f1b84b; --green:#88d5b4; }
     * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
     body { margin:0; font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--text); background:radial-gradient(ellipse at top,#20374a,var(--bg) 65%); }
-    main { width:min(960px,calc(100% - 32px)); margin:0 auto; padding:clamp(32px,7vw,72px) 0; }
-    .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem; }
-    h1 { font-size:clamp(2.5rem,8vw,5rem); line-height:1.05; margin:.4rem 0 1rem; }
-    h2 { margin-top:0; }
-    p, li { color:var(--muted); max-width:70ch; }
-    .panel { margin-top:24px; border:1px solid var(--line); border-radius:18px; padding:clamp(18px,4vw,28px); background:rgba(25,39,53,.88); }
-    nav { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+    main { width:min(1050px,calc(100% - 32px)); margin:0 auto; padding:clamp(28px,6vw,68px) 0; }
+    .eyebrow { color:var(--accent); font-weight:750; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem; }
+    h1 { font-size:clamp(2.7rem,8vw,5.3rem); line-height:1.02; margin:.4rem 0 1rem; letter-spacing:-.04em; }
+    h2 { margin-top:0; line-height:1.2; }
+    h3 { margin:.2rem 0 .5rem; }
+    p, li { color:var(--muted); max-width:72ch; }
+    .lead { font-size:clamp(1.05rem,2.4vw,1.25rem); }
+    .panel { margin-top:22px; border:1px solid var(--line); border-radius:18px; padding:clamp(18px,4vw,28px); background:rgba(25,39,53,.9); box-shadow:0 16px 46px #0002; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:14px; margin-top:16px; }
+    .platform { border:1px solid var(--line); border-radius:13px; padding:18px; background:#101d29; min-width:0; }
+    .platform p { font-size:.94rem; }
+    nav, .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
     a { color:var(--accent); }
-    nav a { display:inline-block; border:1px solid #506274; border-radius:10px; padding:11px 15px; text-decoration:none; font-weight:650; }
-    nav a:hover, nav a:focus-visible { background:#2c4051; outline:2px solid var(--accent); outline-offset:2px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; border:1px solid #506274; border-radius:10px; padding:10px 14px; text-decoration:none; font-weight:680; min-height:44px; }
+    .button.primary { color:#17212a; background:var(--accent); border-color:var(--accent); }
+    .button:hover, .button:focus-visible { background:#2c4051; color:var(--text); outline:2px solid var(--accent); outline-offset:2px; }
+    .button.primary:hover, .button.primary:focus-visible { color:#17212a; background:#ffd37a; }
+    .tag { color:var(--green); font-size:.78rem; text-transform:uppercase; font-weight:750; letter-spacing:.08em; }
     code { color:#fff0c7; overflow-wrap:anywhere; }
-    footer { margin-top:32px; color:var(--muted); font-size:.9rem; }
+    .note { border-left:3px solid var(--accent); padding-left:14px; }
+    footer { margin-top:30px; color:var(--muted); font-size:.9rem; }
+    :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
   </style>
 </head>
 <body>
   <main>
     <div class="eyebrow">Open-source real-time strategy</div>
     <h1>OpenRA</h1>
-    <p>Build bases, command armies, and play classic-inspired RTS games with community mods, custom maps, and multiplayer.</p>
+    <p class="lead">Build bases, command armies, and play classic-inspired RTS games with community mods, custom maps, and multiplayer.</p>
 
     <section class="panel" aria-labelledby="download">
-      <h2 id="download">Get the full game</h2>
-      <p>OpenRA is a native desktop game. Choose a published installer/package if one is available, or build the complete game from this repository. The download page lists releases and their attached files.</p>
-      <nav aria-label="Game downloads">
-        <a href="https://github.com/ArkansasIo/OpenRA-/releases">Downloads and releases</a>
-        <a href="https://github.com/ArkansasIo/OpenRA-/actions/workflows/desktop-build.yml">Build desktop packages</a>
-        <a href="https://github.com/ArkansasIo/OpenRA-/blob/bleed/INSTALL.md">Build and install instructions</a>
-        <a href="https://github.com/ArkansasIo/OpenRA-/archive/refs/heads/bleed.zip">Download source ZIP</a>
+      <h2 id="download">Get the full desktop game</h2>
+      <p>Choose an available platform package below. The latest automated packages are downloadable from GitHub Actions artifacts; those artifacts expire after a limited retention period. Published releases, when available, are the better long-term download source.</p>
+      <div class="grid">
+        <article class="platform">
+          <div class="tag">Windows</div>
+          <h3>Installer / portable ZIP</h3>
+          <p>Windows packages generated by the desktop build workflow.</p>
+          <a class="button primary" href="https://github.com/ArkansasIo/OpenRA-/actions/runs/38621506477">Open Windows build artifacts</a>
+        </article>
+        <article class="platform">
+          <div class="tag">Linux</div>
+          <h3>AppImage packages</h3>
+          <p>Linux AppImages produced by the automated packaging job.</p>
+          <a class="button primary" href="https://github.com/ArkansasIo/OpenRA-/actions/runs/38621506477">Open Linux build artifacts</a>
+        </article>
+        <article class="platform">
+          <div class="tag">macOS</div>
+          <h3>Universal app bundles</h3>
+          <p>macOS app bundles generated by the desktop build workflow.</p>
+          <a class="button primary" href="https://github.com/ArkansasIo/OpenRA-/actions/runs/38621506477">Open macOS build artifacts</a>
+        </article>
+      </div>
+      <nav aria-label="More download options">
+        <a class="button" href="https://github.com/ArkansasIo/OpenRA-/releases">Published releases</a>
+        <a class="button" href="https://github.com/ArkansasIo/OpenRA-/actions/workflows/desktop-build.yml">Run or inspect desktop build</a>
+        <a class="button" href="https://github.com/ArkansasIo/OpenRA-/archive/refs/heads/bleed.zip">Download source ZIP</a>
       </nav>
+      <p class="note"><strong>Artifact download tip:</strong> open the successful workflow run, scroll to its Artifacts section, and download the package for your operating system. If the artifact has expired, rerun the desktop build workflow or check the Releases page.</p>
     </section>
 
-    <section class="panel" aria-labelledby="platforms">
-      <h2 id="platforms">Build from source</h2>
-      <p>The repository includes the game engine, launcher, server, official mod code, and game content definitions. Install the .NET 10 SDK and follow the platform-specific instructions in <code>INSTALL.md</code>.</p>
+    <section class="panel" aria-labelledby="build">
+      <h2 id="build">Build from source</h2>
+      <p>The repository contains the engine, launcher, server, mod code, and game content definitions. Install the .NET 10 SDK and follow the platform-specific instructions in <a href="https://github.com/ArkansasIo/OpenRA-/blob/bleed/INSTALL.md">INSTALL.md</a>.</p>
       <ul>
-        <li><strong>Windows:</strong> run <code>launch-game.cmd</code> after building.</li>
+        <li><strong>Windows:</strong> build with the documented environment, then run <code>launch-game.cmd</code>.</li>
         <li><strong>Linux:</strong> run <code>make</code>, then <code>./launch-game.sh</code>.</li>
         <li><strong>macOS:</strong> install .NET 10, run <code>make</code>, then <code>./launch-game.sh</code>.</li>
       </ul>
-      <p>Available game mods include Tiberian Dawn, Red Alert, and Dune 2000; other mods may be experimental. Some original game assets may need to be supplied or downloaded separately according to the install guide.</p>
+      <p>Distributed mods include Tiberian Dawn, Red Alert, and Dune 2000. Some original game assets may need to be supplied or downloaded separately according to the install guide.</p>
       <nav aria-label="Development resources">
-        <a href="https://github.com/ArkansasIo/OpenRA-">Source repository</a>
-        <a href="https://docs.openra.net/">Documentation</a>
-        <a href="https://github.com/OpenRA/OpenRA/wiki/Modding-Guide">Modding guide</a>
-        <a href="https://www.openra.net/">Official OpenRA website</a>
+        <a class="button" href="https://github.com/ArkansasIo/OpenRA-">Source repository</a>
+        <a class="button" href="https://docs.openra.net/">Documentation</a>
+        <a class="button" href="https://github.com/OpenRA/OpenRA/wiki/Modding-Guide">Modding guide</a>
+        <a class="button" href="https://www.openra.net/">Official OpenRA website</a>
       </nav>
     </section>
 
-    <p><strong>Browser note:</strong> GitHub Pages hosts this website and download links; it does not run the native game inside the browser. A browser-playable edition would require a separate port.</p>
-    <footer>Community project page. OpenRA is free software; see the repository license for terms and attribution.</footer>
+    <section class="panel" aria-labelledby="browser">
+      <h2 id="browser">About browser play</h2>
+      <p>GitHub Pages hosts this project page and its links; it does not run the native OpenRA game inside the browser. A genuine browser-playable edition would require a separate port or compatible runtime, plus testing for rendering, input, audio, networking, and mod asset loading.</p>
+    </section>
+    <footer>Community project page. OpenRA is free software; see the <a href="https://github.com/ArkansasIo/OpenRA-/blob/bleed/COPYING">repository license</a> for terms and attribution.</footer>
   </main>
 </body>
 </html>
