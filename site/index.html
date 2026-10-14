@@ -4,40 +4,61 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101923">
-  <meta name="description" content="OpenRA community project page and links to the game, documentation, and source code.">
+  <meta name="description" content="OpenRA game downloads, source code, build instructions, and documentation.">
   <title>OpenRA — Real-Time Strategy</title>
   <style>
     :root { color-scheme: dark; --bg:#101923; --panel:#192735; --line:#304354; --text:#edf4f8; --muted:#b1c1cd; --accent:#f1b84b; }
     * { box-sizing:border-box; }
     body { margin:0; font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--text); background:radial-gradient(ellipse at top,#20374a,var(--bg) 65%); }
-    main { width:min(920px,calc(100% - 32px)); margin:0 auto; padding:64px 0; }
+    main { width:min(960px,calc(100% - 32px)); margin:0 auto; padding:clamp(32px,7vw,72px) 0; }
     .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem; }
     h1 { font-size:clamp(2.5rem,8vw,5rem); line-height:1.05; margin:.4rem 0 1rem; }
-    p { color:var(--muted); max-width:66ch; }
-    .panel { margin-top:28px; border:1px solid var(--line); border-radius:18px; padding:24px; background:rgba(25,39,53,.86); }
-    nav { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    h2 { margin-top:0; }
+    p, li { color:var(--muted); max-width:70ch; }
+    .panel { margin-top:24px; border:1px solid var(--line); border-radius:18px; padding:clamp(18px,4vw,28px); background:rgba(25,39,53,.88); }
+    nav { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
     a { color:var(--accent); }
     nav a { display:inline-block; border:1px solid #506274; border-radius:10px; padding:11px 15px; text-decoration:none; font-weight:650; }
     nav a:hover, nav a:focus-visible { background:#2c4051; outline:2px solid var(--accent); outline-offset:2px; }
-    footer { margin-top:40px; color:var(--muted); font-size:.9rem; }
+    code { color:#fff0c7; overflow-wrap:anywhere; }
+    footer { margin-top:32px; color:var(--muted); font-size:.9rem; }
   </style>
 </head>
 <body>
   <main>
-    <div class="eyebrow">Open-source RTS</div>
+    <div class="eyebrow">Open-source real-time strategy</div>
     <h1>OpenRA</h1>
-    <p>A libre real-time strategy engine inspired by classic Westwood-era games, with support for community mods, custom maps, and multiplayer.</p>
-    <section class="panel" aria-labelledby="about">
-      <h2 id="about">Command your next match</h2>
-      <p>This project page links to the source repository and official resources. GitHub Pages hosts this static landing page; the playable game is a separate native application and is not run in the browser by this site.</p>
-      <nav aria-label="Project resources">
-        <a href="https://github.com/ArkansasIo/OpenRA-">Source code</a>
-        <a href="https://www.openra.net/">Official website</a>
-        <a href="https://docs.openra.net/">Documentation</a>
-        <a href="https://github.com/OpenRA/OpenRA/wiki/Modding-Guide">Modding guide</a>
+    <p>Build bases, command armies, and play classic-inspired RTS games with community mods, custom maps, and multiplayer.</p>
+
+    <section class="panel" aria-labelledby="download">
+      <h2 id="download">Get the full game</h2>
+      <p>OpenRA is a native desktop game. Choose a published installer/package if one is available, or build the complete game from this repository. The download page lists releases and their attached files.</p>
+      <nav aria-label="Game downloads">
+        <a href="https://github.com/ArkansasIo/OpenRA-/releases">Downloads and releases</a>
+        <a href="https://github.com/ArkansasIo/OpenRA-/blob/bleed/INSTALL.md">Build and install instructions</a>
+        <a href="https://github.com/ArkansasIo/OpenRA-/archive/refs/heads/bleed.zip">Download source ZIP</a>
       </nav>
     </section>
-    <footer>Community project page. OpenRA is free software; see the repository license for details.</footer>
+
+    <section class="panel" aria-labelledby="platforms">
+      <h2 id="platforms">Build from source</h2>
+      <p>The repository includes the game engine, launcher, server, official mod code, and game content definitions. Install the .NET 10 SDK and follow the platform-specific instructions in <code>INSTALL.md</code>.</p>
+      <ul>
+        <li><strong>Windows:</strong> run <code>launch-game.cmd</code> after building.</li>
+        <li><strong>Linux:</strong> run <code>make</code>, then <code>./launch-game.sh</code>.</li>
+        <li><strong>macOS:</strong> install .NET 10, run <code>make</code>, then <code>./launch-game.sh</code>.</li>
+      </ul>
+      <p>Available game mods include Tiberian Dawn, Red Alert, and Dune 2000; other mods may be experimental. Some original game assets may need to be supplied or downloaded separately according to the install guide.</p>
+      <nav aria-label="Development resources">
+        <a href="https://github.com/ArkansasIo/OpenRA-">Source repository</a>
+        <a href="https://docs.openra.net/">Documentation</a>
+        <a href="https://github.com/OpenRA/OpenRA/wiki/Modding-Guide">Modding guide</a>
+        <a href="https://www.openra.net/">Official OpenRA website</a>
+      </nav>
+    </section>
+
+    <p><strong>Browser note:</strong> GitHub Pages hosts this website and download links; it does not run the native game inside the browser. A browser-playable edition would require a separate port.</p>
+    <footer>Community project page. OpenRA is free software; see the repository license for terms and attribution.</footer>
   </main>
 </body>
 </html>
